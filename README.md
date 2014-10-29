@@ -1,5 +1,8 @@
+<img src="icon.png" alt="Tosti Icon" width="72"/>
+
+
 Tosti
-===========
+=====
 
 *An Objective-C interpreter without C support.*
 
