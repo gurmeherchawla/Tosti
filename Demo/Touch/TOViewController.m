@@ -6,7 +6,7 @@
 //
 
 #import "TOViewController.h"
-#import <NWLogging/NWLogging.h>
+#import "NWLLogView.h"
 #import "TORead.h"
 #import "TOMem.h"
 #import "TOEval.h"

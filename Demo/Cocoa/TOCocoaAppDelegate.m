@@ -7,6 +7,8 @@
 //
 
 #import "TOCocoaAppDelegate.h"
+#import "NWLLogView.h"
+#import "NWLCore.h"
 
 @implementation TOCocoaAppDelegate {
     IBOutlet NWLLogView *_console;

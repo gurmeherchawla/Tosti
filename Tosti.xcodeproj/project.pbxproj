@@ -21,6 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B3082AA11A11716700DA494F /* NWLCore.c in Sources */ = {isa = PBXBuildFile; fileRef = B3082A9A1A11716700DA494F /* NWLCore.c */; };
+		B3082AA21A11716700DA494F /* NWLCore.c in Sources */ = {isa = PBXBuildFile; fileRef = B3082A9A1A11716700DA494F /* NWLCore.c */; };
+		B3082AA31A11716700DA494F /* NWLLogView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3082A9D1A11716700DA494F /* NWLLogView.m */; };
+		B3082AA41A11716700DA494F /* NWLLogView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3082A9D1A11716700DA494F /* NWLLogView.m */; };
+		B3082AA51A11716700DA494F /* NWLTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B3082AA01A11716700DA494F /* NWLTools.m */; };
+		B3082AA61A11716700DA494F /* NWLTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B3082AA01A11716700DA494F /* NWLTools.m */; };
 		B35C98B3162B3453003A1D03 /* TOEval.h in Headers */ = {isa = PBXBuildFile; fileRef = B35C98A6162B3453003A1D03 /* TOEval.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B35C98B4162B3453003A1D03 /* TOEval.h in Headers */ = {isa = PBXBuildFile; fileRef = B35C98A6162B3453003A1D03 /* TOEval.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B35C98B6162B3453003A1D03 /* TOEval.m in Sources */ = {isa = PBXBuildFile; fileRef = B35C98A7162B3453003A1D03 /* TOEval.m */; };
@@ -49,7 +55,6 @@
 		B3769A03162962FA0050BAD0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3769A02162962FA0050BAD0 /* Cocoa.framework */; };
 		B3769A3D162969620050BAD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37699F1162962EA0050BAD0 /* Foundation.framework */; };
 		B3769A6516296A810050BAD0 /* libTosti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B37699EE162962EA0050BAD0 /* libTosti.a */; };
-		B3769A6C16296BDF0050BAD0 /* NWLogging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3769A6B16296BDF0050BAD0 /* NWLogging.framework */; };
 		B3769A8E16298E200050BAD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37699F1162962EA0050BAD0 /* Foundation.framework */; };
 		B3769AA316298E310050BAD0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3769A02162962FA0050BAD0 /* Cocoa.framework */; };
 		B3769ACF1629918E0050BAD0 /* libTosti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B37699EE162962EA0050BAD0 /* libTosti.a */; };
@@ -57,7 +62,6 @@
 		B3769AF41629981C0050BAD0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3769AF31629981C0050BAD0 /* libz.dylib */; };
 		B3769AF6162998210050BAD0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3769AF5162998210050BAD0 /* MessageUI.framework */; };
 		B39C0AC41630BE5F001BBAE6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3769A02162962FA0050BAD0 /* Cocoa.framework */; };
-		B39C0ADA1630BEBF001BBAE6 /* NWLogging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3769A6B16296BDF0050BAD0 /* NWLogging.framework */; };
 		B39C0AED1630C140001BBAE6 /* libTosti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3769A01162962FA0050BAD0 /* libTosti.a */; };
 		B3AFDADC162F2D2E0050D1F8 /* TOValue.h in Headers */ = {isa = PBXBuildFile; fileRef = B3AFDADA162F2D2E0050D1F8 /* TOValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3AFDADD162F2D2E0050D1F8 /* TOValue.h in Headers */ = {isa = PBXBuildFile; fileRef = B3AFDADA162F2D2E0050D1F8 /* TOValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -123,6 +127,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B3082A9A1A11716700DA494F /* NWLCore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = NWLCore.c; sourceTree = "<group>"; };
+		B3082A9B1A11716700DA494F /* NWLCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLCore.h; sourceTree = "<group>"; };
+		B3082A9C1A11716700DA494F /* NWLLogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLLogView.h; sourceTree = "<group>"; };
+		B3082A9D1A11716700DA494F /* NWLLogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWLLogView.m; sourceTree = "<group>"; };
+		B3082A9E1A11716700DA494F /* NWLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLPrinter.h; sourceTree = "<group>"; };
+		B3082A9F1A11716700DA494F /* NWLTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLTools.h; sourceTree = "<group>"; };
+		B3082AA01A11716700DA494F /* NWLTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWLTools.m; sourceTree = "<group>"; };
 		B35C98A6162B3453003A1D03 /* TOEval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOEval.h; sourceTree = "<group>"; };
 		B35C98A7162B3453003A1D03 /* TOEval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOEval.m; sourceTree = "<group>"; };
 		B35C98A8162B3453003A1D03 /* TOMem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOMem.h; sourceTree = "<group>"; };
@@ -142,9 +153,8 @@
 		B3769A02162962FA0050BAD0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B3769A261629635C0050BAD0 /* TostiCocoaFramework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TostiCocoaFramework-Info.plist"; sourceTree = "<group>"; };
 		B3769A39162969620050BAD0 /* TostiTouchDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TostiTouchDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3769A6B16296BDF0050BAD0 /* NWLogging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NWLogging.framework; path = Frameworks/NWLogging.framework; sourceTree = "<group>"; };
 		B3769A8A16298E200050BAD0 /* TostiTouchTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TostiTouchTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3769AA116298E310050BAD0 /* TostiCocoaTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TostiCocoaTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3769AA116298E310050BAD0 /* TostiCocoaTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TostiCocoaTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3769ABD16298E890050BAD0 /* TostiCocoaTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TostiCocoaTest-Info.plist"; sourceTree = "<group>"; };
 		B3769ABF16298E890050BAD0 /* TostiTouchTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TostiTouchTest-Info.plist"; sourceTree = "<group>"; };
 		B3769AF31629981C0050BAD0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
@@ -206,7 +216,6 @@
 				B3769AF41629981C0050BAD0 /* libz.dylib in Frameworks */,
 				B3769A6516296A810050BAD0 /* libTosti.a in Frameworks */,
 				B3769A3D162969620050BAD0 /* Foundation.framework in Frameworks */,
-				B3769A6C16296BDF0050BAD0 /* NWLogging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +246,6 @@
 			files = (
 				B39C0AED1630C140001BBAE6 /* libTosti.a in Frameworks */,
 				B39C0AC41630BE5F001BBAE6 /* Cocoa.framework in Frameworks */,
-				B39C0ADA1630BEBF001BBAE6 /* NWLogging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +299,7 @@
 				B3769A01162962FA0050BAD0 /* libTosti.a */,
 				B3769A39162969620050BAD0 /* TostiTouchDemo.app */,
 				B3769A8A16298E200050BAD0 /* TostiTouchTest.octest */,
-				B3769AA116298E310050BAD0 /* TostiCocoaTest.octest */,
+				B3769AA116298E310050BAD0 /* TostiCocoaTest.xctest */,
 				B39C0AC21630BE5F001BBAE6 /* TostiCocoaDemo.app */,
 			);
 			name = Products;
@@ -300,7 +308,6 @@
 		B37699F0162962EA0050BAD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B3769A6B16296BDF0050BAD0 /* NWLogging.framework */,
 				B3769AF31629981C0050BAD0 /* libz.dylib */,
 				B3769AF5162998210050BAD0 /* MessageUI.framework */,
 				B37699F1162962EA0050BAD0 /* Foundation.framework */,
@@ -375,6 +382,13 @@
 			children = (
 				B3DAB26B1630C77F00DEA919 /* TOConsoleController.h */,
 				B3DAB26C1630C77F00DEA919 /* TOConsoleController.m */,
+				B3082A9A1A11716700DA494F /* NWLCore.c */,
+				B3082A9B1A11716700DA494F /* NWLCore.h */,
+				B3082A9C1A11716700DA494F /* NWLLogView.h */,
+				B3082A9D1A11716700DA494F /* NWLLogView.m */,
+				B3082A9E1A11716700DA494F /* NWLPrinter.h */,
+				B3082A9F1A11716700DA494F /* NWLTools.h */,
+				B3082AA01A11716700DA494F /* NWLTools.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -530,7 +544,7 @@
 			);
 			name = TostiCocoaTest;
 			productName = TostiCocoaTest;
-			productReference = B3769AA116298E310050BAD0 /* TostiCocoaTest.octest */;
+			productReference = B3769AA116298E310050BAD0 /* TostiCocoaTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B39C0AC11630BE5F001BBAE6 /* TostiCocoaDemo */ = {
@@ -699,10 +713,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3082AA11A11716700DA494F /* NWLCore.c in Sources */,
 				B3DAB2831630C7A600DEA919 /* TOTouchAppDelegate.m in Sources */,
+				B3082AA51A11716700DA494F /* NWLTools.m in Sources */,
 				B3DAB2841630C7A600DEA919 /* TOViewController.m in Sources */,
 				B3DAB2861630C7AC00DEA919 /* TOConsoleController.m in Sources */,
 				B3DAB28C1630C81C00DEA919 /* main.m in Sources */,
+				B3082AA31A11716700DA494F /* NWLLogView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,8 +747,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3082AA21A11716700DA494F /* NWLCore.c in Sources */,
 				B3DAB2851630C7AB00DEA919 /* TOConsoleController.m in Sources */,
 				B3DAB2881630C7B200DEA919 /* TOCocoaAppDelegate.m in Sources */,
+				B3082AA61A11716700DA494F /* NWLTools.m in Sources */,
+				B3082AA41A11716700DA494F /* NWLLogView.m in Sources */,
 				B3DAB28B1630C81C00DEA919 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -922,7 +942,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
-					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -961,7 +980,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
-					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1124,10 +1142,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1165,10 +1180,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
