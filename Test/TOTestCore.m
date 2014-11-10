@@ -5,13 +5,13 @@
 //  Copyright (c) 2012 Tosti. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TORead.h"
 #import "TOEval.h"
 #import "TOMem.h"
 
 
-@interface TOTestCore : SenTestCase <TODelegate> @end
+@interface TOTestCore : XCTestCase <TODelegate> @end
 
 @implementation TOTestCore {
     NSString *_logs;
@@ -40,79 +40,79 @@
 
 - (void)testNil
 {
-    STAssertEqualObjects([_mem get:@"nil"], nil, @"");
-    STAssertEqualObjects([_mem get:@"x"], nil, @"");
+    XCTAssertEqualObjects([_mem get:@"nil"], nil, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], nil, @"");
     [self eval:@"x"];
-    STAssertEqualObjects([_mem get:@"x"], nil, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], nil, @"");
     [self eval:@"x=nil"];
-    STAssertEqualObjects([_mem get:@"x"], nil, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], nil, @"");
     [self eval:@"x=[nil length]"];
-    STAssertEqualObjects([_mem get:@"x"], nil, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], nil, @"");
     [self eval:@"x=y"];
-    STAssertEqualObjects([_mem get:@"x"], nil, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], nil, @"");
     [self eval:@"x=z()"];
-    STAssertEqualObjects([_mem get:@"x"], nil, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], nil, @"");
     [self eval:@"x=[a b]"];
-    STAssertEqualObjects([_mem get:@"x"], nil, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], nil, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testNumberAndString
 {
     [self eval:@"x=1"];
-    STAssertEqualObjects([_mem get:@"x"], @1, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @1, @"");
     [self eval:@"x=\"1\""];
-    STAssertEqualObjects([_mem get:@"x"], @"1", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"1", @"");
     [self eval:@"x='1'"];
-    STAssertEqualObjects([_mem get:@"x"], @"1", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"1", @"");
     [self eval:@"x=@1"];
-    STAssertEqualObjects([_mem get:@"x"], @1, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @1, @"");
     [self eval:@"x=@\"1\""];
-    STAssertEqualObjects([_mem get:@"x"], @"1", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"1", @"");
     [self eval:@"x=@'1'"];
-    STAssertEqualObjects([_mem get:@"x"], @"1", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"1", @"");
     [self eval:@"x=@y"];
-    STAssertEqualObjects([_mem get:@"x"], @"y", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"y", @"");
     [self eval:@"x=@\"1\\\"\""];
-    STAssertEqualObjects([_mem get:@"x"], @"1\"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"1\"", @"");
     [self eval:@"x=@\"\\\"1\""];
-    STAssertEqualObjects([_mem get:@"x"], @"\"1", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"\"1", @"");
     [self eval:@"x=@'1\\''"];
-    STAssertEqualObjects([_mem get:@"x"], @"1'", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"1'", @"");
     [self eval:@"x=@'\\'1'"];
-    STAssertEqualObjects([_mem get:@"x"], @"'1", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"'1", @"");
     [self eval:@"x=-1"];
-    STAssertEqualObjects([_mem get:@"x"], @-1, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @-1, @"");
     [self eval:@"x=.1"];
-    STAssertEqualObjects([_mem get:@"x"], @.1, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @.1, @"");
     [self eval:@"x=1.1"];
-    STAssertEqualObjects([_mem get:@"x"], @1.1, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @1.1, @"");
     [self eval:@"x=-.1"];
-    STAssertEqualObjects([_mem get:@"x"], @-.1, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @-.1, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testArray
 {
-    STAssertEqualObjects([self eval:@"@[]"], @[], @"");
-    STAssertEqualObjects([self eval:@"@[@1]"], @[@1], @"");
-    id x = @ [ @ "1" , @ 1 ]; STAssertEqualObjects([self eval:@"@ [ @ \"1\" , @ 1 ] "], x, @"");
+    XCTAssertEqualObjects([self eval:@"@[]"], @[], @"");
+    XCTAssertEqualObjects([self eval:@"@[@1]"], @[@1], @"");
+    id x = @ [ @ "1" , @ 1 ]; XCTAssertEqualObjects([self eval:@"@ [ @ \"1\" , @ 1 ] "], x, @"");
     [self eval:@"x=@[1]x=x[0]"];
-    STAssertEqualObjects([_mem get:@"x"], @1, @"");
-    STAssertEqualObjects([self eval:@"@[1 2][1]"], @2, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @1, @"");
+    XCTAssertEqualObjects([self eval:@"@[1 2][1]"], @2, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testDictionary
 {
-    STAssertEqualObjects([self eval:@"@{}"], @{}, @"");
-    STAssertEqualObjects([self eval:@"@{@1}"], @{@1:NSNull.null}, @"");
-    STAssertEqualObjects([self eval:@"@{@1:}"], @{@1:NSNull.null}, @"");
-    STAssertEqualObjects([self eval:@"@{@1:@2}"], @{@1:@2}, @"");
-    id x = @{@"1":@"2",@1:@2}; STAssertEqualObjects([self eval:@"@{@\"1\":@\"2\",@1:@2}"], x, @"");
+    XCTAssertEqualObjects([self eval:@"@{}"], @{}, @"");
+    XCTAssertEqualObjects([self eval:@"@{@1}"], @{@1:NSNull.null}, @"");
+    XCTAssertEqualObjects([self eval:@"@{@1:}"], @{@1:NSNull.null}, @"");
+    XCTAssertEqualObjects([self eval:@"@{@1:@2}"], @{@1:@2}, @"");
+    id x = @{@"1":@"2",@1:@2}; XCTAssertEqualObjects([self eval:@"@{@\"1\":@\"2\",@1:@2}"], x, @"");
     [self eval:@"x = @ { 1 : 2 } x = x[ 1 ] "];
-    STAssertEqualObjects([_mem get:@"x"], @ 2, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @ 2, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 
@@ -121,78 +121,78 @@
 - (void)testAssignment
 {
     [self eval:@"x='test'"];
-    STAssertEqualObjects([_mem get:@"x"], @"test", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"test", @"");
     [self eval:@"x=3"];
-    STAssertEqualObjects([_mem get:@"x"], @3, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @3, @"");
     [self eval:@"x='' x.string='b'.description"];
-    STAssertEqualObjects([_mem get:@"x"], @"b", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"b", @"");
     [self eval:@"x=@[] x[0]='b'"];
-    STAssertEqualObjects([_mem get:@"x"], @[@"b"], @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @[@"b"], @"");
     [self eval:@"x=@{} x['a']='b'"];
-    STAssertEqualObjects([_mem get:@"x"], @{@"a":@"b"}, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @{@"a":@"b"}, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testDotNotation
 {
     [self eval:@"x='A'x=x.lowercaseString"];
-    STAssertEqualObjects([_mem get:@"x"], @"a", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"a", @"");
     [self eval:@"x=x.lowercaseString.uppercaseString"];
-    STAssertEqualObjects([_mem get:@"x"], @"A", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"A", @"");
     [self eval:@"x=['B' lowercaseString].uppercaseString"];
-    STAssertEqualObjects([_mem get:@"x"], @"B", @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"B", @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testSpaces
 {
     [self eval:@"  x  =  3  "];
-    STAssertEqualObjects([_mem get:@"x"], @3, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @3, @"");
     [self eval:@"  x  =  '  test  '  "];
-    STAssertEqualObjects([_mem get:@"x"], @"  test  ", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"  test  ", @"");
     [self eval:@"  x  =  [  [  '  test  '  stringByAppendingString  :  '  ing..  '  ]  stringByAppendingString  :  [  x  stringByAppendingString  :  '  ..  '  ]  ]  "];
-    STAssertEqualObjects([_mem get:@"x"], @"  test    ing..    test    ..  ", @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"  test    ing..    test    ..  ", @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testScope
 {
     [self eval:@"{}x={}"];
-    STAssertEqualObjects([_mem get:@"x"], nil, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], nil, @"");
     [self eval:@"{x=1}"];
-    STAssertEqualObjects([_mem get:@"x"], @1, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @1, @"");
     [self eval:@"{{x=2}}"];
-    STAssertEqualObjects([_mem get:@"x"], @2, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @2, @"");
     [self eval:@"x={x=2 y=3}"];
-    STAssertEqualObjects([_mem get:@"x"], @3, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @3, @"");
     [self eval:@"x={x=3{y=4}}"];
-    STAssertEqualObjects([_mem get:@"x"], @4, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @4, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testBlocks
 {
     [self eval:@"x=^{y=7 return;y=5}x()"];
-    STAssertEqualObjects([_mem get:@"y"], @7, @"");
+    XCTAssertEqualObjects([_mem get:@"y"], @7, @"");
     [self eval:@"x=^{return 5}y=x()"];
-    STAssertEqualObjects([_mem get:@"y"], @5, @"");
+    XCTAssertEqualObjects([_mem get:@"y"], @5, @"");
     [self eval:@"x=^{2}()"];
-    STAssertEqualObjects([_mem get:@"x"], @2, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @2, @"");
     [self eval:@"x=^{@[3 4]}()[1]"];
-    STAssertEqualObjects([_mem get:@"x"], @4, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @4, @"");
     [self eval:@"x=^{@[3 ^{5}]}()[1]()"];
-    STAssertEqualObjects([_mem get:@"x"], @5, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @5, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testPointer
 {
     [self eval:@"NSString *a = @'hello'"];
-    STAssertEqualObjects([_mem get:@"a"], @"hello", @"");
+    XCTAssertEqualObjects([_mem get:@"a"], @"hello", @"");
     [self eval:@"NSString* b = @'hello'"];
-    STAssertEqualObjects([_mem get:@"b"], @"hello", @"");
+    XCTAssertEqualObjects([_mem get:@"b"], @"hello", @"");
     [self eval:@"NSString * c = @'hello'"];
-    STAssertEqualObjects([_mem get:@"c"], @"hello", @"");
+    XCTAssertEqualObjects([_mem get:@"c"], @"hello", @"");
 }
 
 
@@ -200,24 +200,24 @@
 
 - (void)testClass
 {
-    STAssertEqualObjects([self eval:@"[[NSArray alloc]init]"], @[], @"");
-    STAssertEqualObjects([self eval:@"[NSArray array]"], @[], @"");
-    STAssertEqualObjects([self eval:@"[[NSArray arrayWithObject:@[]]count]"], @1, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([self eval:@"[[NSArray alloc]init]"], @[], @"");
+    XCTAssertEqualObjects([self eval:@"[NSArray array]"], @[], @"");
+    XCTAssertEqualObjects([self eval:@"[[NSArray arrayWithObject:@[]]count]"], @1, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testString
 {
     [self eval:@"a='test'"];
-    STAssertEqualObjects([self eval:@"[a length]"], @4, @"");
-    STAssertEqualObjects([self eval:@"[a stringByReplacingOccurrencesOfString:'st'withString:'sted']"], @"tested", @"");
+    XCTAssertEqualObjects([self eval:@"[a length]"], @4, @"");
+    XCTAssertEqualObjects([self eval:@"[a stringByReplacingOccurrencesOfString:'st'withString:'sted']"], @"tested", @"");
     [self eval:@"b='ing' x=[a stringByAppendingString:b]"];
-    STAssertEqualObjects([_mem get:@"x"], @"testing", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"testing", @"");
     [self eval:@"x=[['test'stringByAppendingString:'ing..']stringByAppendingString:[x stringByAppendingString:'..']]"];
-    STAssertEqualObjects([_mem get:@"x"], @"testing..testing..", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"testing..testing..", @"");
     [self eval:@"y=10 x=[x substringFromIndex:y]"];
-    STAssertEqualObjects([_mem get:@"x"], @"esting..", @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"esting..", @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 
@@ -225,14 +225,14 @@
 
 - (void)testSelector
 {
-    STAssertEqualObjects([self eval:@"['a' performSelector:@selector(uppercaseString)]"], @"A", @"");
-    STAssertEqualObjects([self eval:@"['a' performSelector:@selector(stringByAppendingString:) withObject:'b']"], @"ab", @"");
-    STAssertEqualObjects([self eval:@"['a' performSelector:@uppercaseString]"], @"A", @"");
-    id x = @[@"a",@"b"]; STAssertEqualObjects([self eval:@"[@['b' 'a'] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]"], x, @"");
-    STAssertEqualObjects([self eval:@"[NSString stringWithFormat:'a']"], @"a", @"");
-    STAssertEqualObjects([self eval:@"[NSString stringWithFormat:'a%@c%@e','b','d']"], @"abcde", @"");
-    STAssertEqualObjects([self eval:@"['a' stringByAppendingString:'b','c','d']"], @"ab", @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([self eval:@"['a' performSelector:@selector(uppercaseString)]"], @"A", @"");
+    XCTAssertEqualObjects([self eval:@"['a' performSelector:@selector(stringByAppendingString:) withObject:'b']"], @"ab", @"");
+    XCTAssertEqualObjects([self eval:@"['a' performSelector:@uppercaseString]"], @"A", @"");
+    id x = @[@"a",@"b"]; XCTAssertEqualObjects([self eval:@"[@['b' 'a'] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]"], x, @"");
+    XCTAssertEqualObjects([self eval:@"[NSString stringWithFormat:'a']"], @"a", @"");
+    XCTAssertEqualObjects([self eval:@"[NSString stringWithFormat:'a%@c%@e','b','d']"], @"abcde", @"");
+    XCTAssertEqualObjects([self eval:@"['a' stringByAppendingString:'b','c','d']"], @"ab", @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 
@@ -241,20 +241,20 @@
 - (void)xtestException
 {
     [self eval:@"x=['' stringByAppendingString:nil]"];
-    STAssertEqualObjects([_mem get:@"x"], nil, @"");
-    STAssertEqualObjects(_logs, @"Exception '*** -[__NSCFString stringByAppendingString:]: nil argument' at 'x=`['' stringByAppendin..' (2)\n", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], nil, @"");
+    XCTAssertEqualObjects(_logs, @"Exception '*** -[__NSCFString stringByAppendingString:]: nil argument' at 'x=`['' stringByAppendin..' (2)\n", @"");
 }
 
 - (void)testIllegals
 {
     _logs = @""; [self eval:@"["];
-    STAssertEqualObjects(_logs, @"expecting method target at '[`'\n", @"");
+    XCTAssertEqualObjects(_logs, @"expecting method target at '[`'\n", @"");
     _logs = @""; [self eval:@"[]"];
-    STAssertEqualObjects(_logs, @"expecting method target at '[]`'\n", @"");
+    XCTAssertEqualObjects(_logs, @"expecting method target at '[]`'\n", @"");
     _logs = @""; [self eval:@"[x]"];
-    STAssertEqualObjects(_logs, @"expecting method selector at '[x]`'\n", @"");
+    XCTAssertEqualObjects(_logs, @"expecting method selector at '[x]`'\n", @"");
     _logs = @""; [self eval:@"("];
-    STAssertEqualObjects(_logs, @"expecting scope at '`('\n", @"");
+    XCTAssertEqualObjects(_logs, @"expecting scope at '`('\n", @"");
 }
 
 
@@ -263,23 +263,23 @@
 - (void)testMath
 {
     [self eval:@"TO.load(_mem, TOMath)"];
-    STAssertEqualObjects([self eval:@"add()"], @0, @"");
-    STAssertEqualObjects([self eval:@"add(1)"], @1, @"");
-    STAssertEqualObjects([self eval:@"add(1 2)"], @3, @"");
-    STAssertEqualObjects([self eval:@"add(1 2 3)"], @3, @"");
-    STAssertEqualObjects([self eval:@"add(@[])"], @0, @"");
-    STAssertEqualObjects([self eval:@"add(@[1])"], @1, @"");
-    STAssertEqualObjects([self eval:@"add(@[1 2])"], @3, @"");
-    STAssertEqualObjects([self eval:@"add(@[1 2 3])"], @6, @"");
-    STAssertEqualObjects([self eval:@"add('1' 2)"], @0, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([self eval:@"add()"], @0, @"");
+    XCTAssertEqualObjects([self eval:@"add(1)"], @1, @"");
+    XCTAssertEqualObjects([self eval:@"add(1 2)"], @3, @"");
+    XCTAssertEqualObjects([self eval:@"add(1 2 3)"], @3, @"");
+    XCTAssertEqualObjects([self eval:@"add(@[])"], @0, @"");
+    XCTAssertEqualObjects([self eval:@"add(@[1])"], @1, @"");
+    XCTAssertEqualObjects([self eval:@"add(@[1 2])"], @3, @"");
+    XCTAssertEqualObjects([self eval:@"add(@[1 2 3])"], @6, @"");
+    XCTAssertEqualObjects([self eval:@"add('1' 2)"], @0, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testFor
 {
     [self eval:@"x=0 [TO while:^{x=TOMath.inc(x)TOMath.less(@[x 5])}]"];
-    STAssertEqualObjects([_mem get:@"x"], @5, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @5, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 @end

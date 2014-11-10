@@ -5,12 +5,12 @@
 //  Copyright (c) 2012 Tosti. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TORead.h"
 #import "TOEval.h"
 #import "TOMem.h"
 
-@interface TOTestCocoa : SenTestCase <TODelegate> @end
+@interface TOTestCocoa : XCTestCase <TODelegate> @end
 
 @implementation TOTestCocoa {
     NSString *_logs;
@@ -39,46 +39,46 @@
 - (void)testFoundation
 {
     [self eval:@"x=NSStringFromClass(NSClassFromString('TO'))"];
-    STAssertEqualObjects([_mem get:@"x"], @"TO", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"TO", @"");
     [self eval:@"x=NSStringFromProtocol(NSProtocolFromString('TODelegate'))"];
-    STAssertEqualObjects([_mem get:@"x"], @"TODelegate", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"TODelegate", @"");
     [self eval:@"x=NSStringFromSelector(NSSelectorFromString('stringByAppendingString:'))"];
-    STAssertEqualObjects([_mem get:@"x"], @"stringByAppendingString:", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"stringByAppendingString:", @"");
     [self eval:@"y=NSMakeRange(1 2) x=y.location"];
-    STAssertEqualObjects([_mem get:@"x"], @1, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @1, @"");
     [self eval:@"x=y.length"];
-    STAssertEqualObjects([_mem get:@"x"], @2, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @2, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 
 - (void)testCoreGraphics
 {
     [self eval:@"y=CGRectMake(1 2 3 4) x=y.origin.x"];
-    STAssertEqualObjects([_mem get:@"x"], @1, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @1, @"");
     [self eval:@"x=y.origin.y"];
-    STAssertEqualObjects([_mem get:@"x"], @2, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @2, @"");
     [self eval:@"x=y.size.width"];
-    STAssertEqualObjects([_mem get:@"x"], @3, @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @3, @"");
     [self eval:@"x=y.size.height"];
-    STAssertEqualObjects([_mem get:@"x"], @4, @"");
-    STAssertEqualObjects(_logs, @"", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @4, @"");
+    XCTAssertEqualObjects(_logs, @"", @"");
 }
 
 - (void)testStringFrom
 {
     [self eval:@"x=NSStringFromRect(NSMakeRect(1 2 3 4))"];
-    STAssertEqualObjects([_mem get:@"x"], @"{{1, 2}, {3, 4}}", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"{{1, 2}, {3, 4}}", @"");
     [self eval:@"x=NSStringFromPoint(NSMakePoint(1 2))"];
-    STAssertEqualObjects([_mem get:@"x"], @"{1, 2}", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"{1, 2}", @"");
     [self eval:@"x=NSStringFromSize(NSMakeSize(2 3))"];
-    STAssertEqualObjects([_mem get:@"x"], @"{2, 3}", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"{2, 3}", @"");
     [self eval:@"x=NSStringFromCGRect(CGRectMake(1 2 3 4))"];
-    STAssertEqualObjects([_mem get:@"x"], @"{{1, 2}, {3, 4}}", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"{{1, 2}, {3, 4}}", @"");
     [self eval:@"x=NSStringFromCGPoint(CGPointMake(1 2))"];
-    STAssertEqualObjects([_mem get:@"x"], @"{1, 2}", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"{1, 2}", @"");
     [self eval:@"x=NSStringFromCGSize(CGSizeMake(2 3))"];
-    STAssertEqualObjects([_mem get:@"x"], @"{2, 3}", @"");
+    XCTAssertEqualObjects([_mem get:@"x"], @"{2, 3}", @"");
 }
 
 @end
