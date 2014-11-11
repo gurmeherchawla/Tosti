@@ -106,14 +106,13 @@ static NSUInteger const TOStackSize = 100;
 
 - (id)evalAssignment:(NSArray *)statement index:(NSUInteger)index
 {
-    id result = nil;
     id target = statement.count > 2 ? statement[2] : nil;
     id value = statement.count > 3 ? [self evalStatement:statement[3]] : nil;
     if ([target isKindOfClass:NSArray.class]) {
         if ([target count] == 4 && [target[0] characterAtIndex:0] == TOTypeMethod) {
             id t = [self resolve:target[2]];
             NSString *s = [[NSString alloc] initWithFormat:@"set%@%@:", [target[3] substringToIndex:1].uppercaseString, [target[3] substringFromIndex:1]];
-            result = [self performOnTarget:t selectorString:s arguments:@[value] index:index];
+            [self performOnTarget:t selectorString:s arguments:@[value ?: TONil] index:index];
         } else if ([target count] == 4 && [target[0] characterAtIndex:0] == TOTypeReference) {
             id t = [self resolve:target[2]];
             id sub = [self resolve:target[3]];
@@ -131,8 +130,7 @@ static NSUInteger const TOStackSize = 100;
             } else if (t) [self logAt:index line:@"Object not assignable '%@'", t];
         } else [self logAt:index line:@"Not assignable"];
     } else if ([target isKindOfClass:NSString.class]) [_mem set:value name:target];
-    result = value;
-    return result;
+    return value;
 }
 
 - (id)evalBlock:(NSArray *)statement index:(NSUInteger)index
@@ -205,15 +203,13 @@ static NSUInteger const TOStackSize = 100;
 {
     id result = nil;
     NSArray *scope = statement.count > 2 ? statement[2] : nil;
-    BOOL log = NO;
     for (NSArray *s in scope) {
-        // if (log) [self.delegate log:result]; log = NO;
         BOOL brk = NO;
         if ([s isKindOfClass:NSArray.class]) {
             char t = s.count > 0 ? [s[0] characterAtIndex:0] : '\0';
             switch (t) {
                 case TOTypeReturn: result = s.count > 2 ? [self evalStatement:s[2]] : nil; brk = YES; break;
-                case TOTypeValue: case TOTypeReference: log = YES; // fallthrough
+                case TOTypeValue: case TOTypeReference: // fallthrough
                 default: result = [self evalStatement:s]; break;
             }
         } else [self logAt:index line:@"Unknown statement '%@'", s];
